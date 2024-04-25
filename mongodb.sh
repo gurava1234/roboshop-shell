@@ -27,4 +27,26 @@ then
    exit 1 # you can give otherthan 0
 else 
    echo "you are root user"
-fi
+fi #fi means reverse of if, indicating condition end
+
+cp mongo.repo /etc/yum.repos.d/mongo.db &>> $LOGFILE
+
+VALIDATE $questionmark "copied mongoDB Repo"
+
+dnf install mongodb-org -y &>> $LOGFILE
+
+VALIDATE $QUESTIONMAK "Installing mongoDB"
+
+systemctl enable mongod
+
+VLIADTE $questionmark "Enabling MongoDB"
+
+systemctl start mongod
+
+VLIDATE $questionmark "starting mongoDB
+
+sed -i 's/127.0.0.1/0.0.0/g' / /etc/mongod.cong &LOGFILE
+
+VALIDATE $questionmark "Remote access to MongoDB"
+
+systemctl restart mongod &>> $LOGFILE
