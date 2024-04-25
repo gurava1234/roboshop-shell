@@ -29,7 +29,7 @@ else
    echo "you are root user"
 fi #fi means reverse of if, indicating condition end
 
-cp mongo.repo /etc/yum.repos.d/mongo.db &>> $LOGFILE
+cp mongo.repo /etc/yum.repos.d/mongo.repo &>> $LOGFILE
 
 VALIDATE $? "copied mongoDB Repo"
 
