@@ -64,7 +64,9 @@ cd /app
 
 unzip -o /tmp/catalogue.zip 
 
-VALIDATE $? "unzipping catalogue" 
+VALIDATE $? "unzipping catalogue"
+
+cd /app
 
 npm install 
 
