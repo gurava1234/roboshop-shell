@@ -71,7 +71,7 @@ npm install
 VALIDATE $? "Installing dependencies" 
 #use absolutepath,because catalogue.service exists there
 
-cp /home/centos/robosho-shell/catalogue.service /etc/systemd/system/catalogue.service 
+cp /home/centos/roboshop-shell/catalogue.service /etc/systemd/system/catalogue.service 
 
 VALIDATE $? "copying catalogue service file"
 
