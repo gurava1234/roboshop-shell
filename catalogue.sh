@@ -31,15 +31,15 @@ else
    echo "you are root user"
 fi #fi means reverse of if, indicating condition end
 
-dnf module disable nodejs -y &>> $LOGFILE
+dnf module disable nodejs -y 
 
 VALIDATE $? "Disabaling current NodeJS" 
 
-dnf module enable nodejs:18 -y &>> $LOGFILE
+dnf module enable nodejs:18 -y 
 
 VALIDATE $? "enabling NodeJS:18 &>> 
 
-dnf install nodejs -y &>> $LOGFILE
+dnf install nodejs -y &>> 
 
 VALIDATE $? "Installing NodeJS:18 
 
@@ -58,32 +58,32 @@ VALIDATE $? "creating app directory"
 
 curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip
 
-VALIDATE $? "Downloading catalogue application" &>> $LOGFILE
+VALIDATE $? "Downloading catalogue application" 
 
 cd /app
 
-unzip -o /tmp/catalogue.zip &>> $LOGFILE
+unzip -o /tmp/catalogue.zip 
 
 VALIDATE $? "unzipping catalogue" 
 
-npm install &>> $LOGFILE
+npm install 
 
 VALIDATE $? "Installing dependencies" 
 #use absolutepath,because catalogue.service exists there
 
-cp /home/centos/robosho-shell/catalogue.service /etc/systemd/system/catalogue.service &>> $LOGFILE
+cp /home/centos/robosho-shell/catalogue.service /etc/systemd/system/catalogue.service 
 
 VALIDATE $? "copying catalogue service file"
 
-systemctl daemon-reload &>> $LOGFILE
+systemctl daemon-reload 
 
 VALIDATE $? "catalogue daemon reload" 
 
-systemctl enable catalogue &>> $LOGFILE
+systemctl enable catalogue 
 
 VALIDATE $? "Enable catalogue" 
 
-systemctl start catalogue &>> $LOGFILE
+systemctl start catalogue 
 
 VALIDATE $? "starting catalogue" 
 
@@ -91,10 +91,10 @@ cp /home/centos/robosho-shell/mongo.repo /etc/yum.repos.d/mongo.repo
 
 VALIDATE $? "copying mongodb repo" 
 
-dnf install mongodb-org-shell -y &>> $LOGFILE
+dnf install mongodb-org-shell -y 
 
 VALIDATE $? "Inatalling mongoDB client" 
 
-mongo --host $MONGODB_HOST </app/schema/catalogue.js &>> $LOGFILE
+mongo --host $MONGODB_HOST </app/schema/catalogue.js
 
 VALIDATE $? "loading catalogue data into mongoDB"
