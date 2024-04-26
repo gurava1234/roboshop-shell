@@ -66,8 +66,6 @@ unzip -o /tmp/catalogue.zip
 
 VALIDATE $? "unzipping catalogue"
 
-cd /app
-
 npm install 
 
 VALIDATE $? "Installing dependencies" 
