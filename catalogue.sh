@@ -66,7 +66,7 @@ unzip -o /tmp/catalogue.zip &>> $LOGFILE
 
 VALIDATE $? "unzipping catalogue" 
 
-npm install
+npm install &>> $LOGFILE
 
 VALIDATE $? "Installing dependencies" 
 #use absolutepath,because catalogue.service exists there
