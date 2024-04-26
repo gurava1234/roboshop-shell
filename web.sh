@@ -57,7 +57,7 @@ VALIDATE $? "moving nginx html directory"
 
 unzip -o /tmp/web.zip
 
-VALIDATE $? ""unzipping web"
+VALIDATE $? "unzipping web"
 
 cp /home/centos/roboshop-shell/roboshop.conf /etc/nginx/default.d/roboshop.conf
 
