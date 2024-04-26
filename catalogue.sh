@@ -63,7 +63,7 @@ VALIDATE $? "unzipping catalogue"
 npm install
 
 VALIDATE $? "Installing dependencies" 
-#use abso;iutepath,because catalogue.service exists there
+#use absolutepath,because catalogue.service exists there
 
 cp /home/centos/robosho-shell/catalogue.service /etc/systemd/system/catalogue.service &>> $LOGFILE
 
