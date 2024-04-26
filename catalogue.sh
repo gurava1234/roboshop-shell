@@ -4,9 +4,9 @@ ID=$(id -u)
 
 R="\e[31m"
 G="\e[32m"
-Y="\e[33m
-N="\e[0m
-MONGODB_HOST=mongo.gonepudirobot.online
+Y="\e[33m"
+N="\e[0m"
+MONGODB_HOST="mongodb.daws76s.cfd"
 
 TIMESTAMP=$(date +%f-%H-%M-%M)
 LOGFILE="/tmp/$0-$TIMESTAMP.log"
@@ -37,11 +37,11 @@ VALIDATE $? "Disabaling current NodeJS"
 
 dnf module enable nodejs:18 -y 
 
-VALIDATE $? "enabling NodeJS:18 &>> 
+VALIDATE $? "enabling NodeJS:18 "
 
-dnf install nodejs -y &>> 
+dnf install nodejs -y 
 
-VALIDATE $? "Installing NodeJS:18 
+VALIDATE $? "Installing NodeJS:18"
 
 id roboshop 
 if [$? -ne 0]
@@ -95,6 +95,6 @@ dnf install mongodb-org-shell -y
 
 VALIDATE $? "Inatalling mongoDB client" 
 
-mongo --host $MONGODB_HOST </app/schema/catalogue.js
+mongo --host $MONGODB_HOST < /app/schema/catalogue.js
 
 VALIDATE $? "loading catalogue data into mongoDB"
