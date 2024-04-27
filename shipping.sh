@@ -75,3 +75,5 @@ VALIDATE $? "Installing MySQL client"
 mysql -h mysql.daws76s.cfd -uroot -pRoboShop@1 < /app/schema/shipping.sql
 VALIDATE $? "Loading shipping data"
 
+systemctl restart shipping
+
