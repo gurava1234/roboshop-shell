@@ -33,13 +33,12 @@ fi #fi means reverse of if, indicating condition end
 dnf install maven -y
 
 id roboshop 
-if [$? -ne 0]
-then 
+if [ $? -ne 0 ]; then
     useradd roboshop
     VALIDATE $? "roboshop user creation"
 else
-    echo -e "roboshop user already exist $Y skipping $N"
-fi  
+    echo -e "roboshop user already exists, skipping"
+fi 
 
 mkdir -p /app
 
