@@ -30,17 +30,17 @@ else
    echo "you are root user"
 fi #fi means reverse of if, indicating condition end
 
-dnf module disable nodejs -y &>> $LOGFILE
+dnf module disable nodejs -y 
 
 VALIDATE $? "Disabaling current NodeJS" 
 
-dnf module enable nodejs:18 -y &>> $LOGFILE
+dnf module enable nodejs:18 -y 
 
-VALIDATE $? "enabling NodeJS:18 &>> 
+VALIDATE $? "enabling NodeJS:18"
 
-dnf install nodejs -y &>> $LOGFILE
+dnf install nodejs -y 
 
-VALIDATE $? "Installing NodeJS:18 
+VALIDATE $? "Installing NodeJS:18" 
 
 id roboshop 
 if [$? -ne 0]
@@ -55,34 +55,34 @@ mkdir -p /app
 
 VALIDATE $? "creating app directory" 
 
-curl -o /tmp/cart.zip https://roboshop-builds.s3.amazonaws.com/cart.zip &>> $LOGFILE
+curl -o /tmp/cart.zip https://roboshop-builds.s3.amazonaws.com/cart.zip 
 
 VALIDATE $? "Downloading cart application" 
 
 cd /app
 
-unzip -o /tmp/cart.zip &>> $LOGFILE
+unzip -o /tmp/cart.zip 
 
 VALIDATE $? "unzipping cart" 
 
-npm install &>> $LOGFILE
+npm install 
 
 VALIDATE $? "Installing dependencies" 
 #use absolutepath,because catalogue.service exists there
 
-cp /home/centos/robosho-shell/cart.service /etc/systemd/system/cart.service &>> $LOGFILE
+cp /home/centos/robosho-shell/cart.service /etc/systemd/system/cart.service
 
 VALIDATE $? "copying cart service file"
 
-systemctl daemon-reload &>> $LOGFILE
+systemctl daemon-reload 
 
 VALIDATE $? "cart daemon reload" 
 
-systemctl enable cart &>> $LOGFILE
+systemctl enable cart
 
 VALIDATE $? "Enable cart" 
 
-systemctl start cart &>> $LOGFILE
+systemctl start cart
 
-VALIDATE $? "starting cartr" 
+VALIDATE $? "starting cart" 
 
