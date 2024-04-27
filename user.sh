@@ -94,7 +94,7 @@ dnf install mongodb-org-shell -y
 
 VALIDATE $? "Inatalling mongoDB client" 
 
-mongo --host $MONGODB_HOST </app/schema/catalogue.js 
+mongo --host $MONGODB_HOST </app/schema/user.js 
 
 VALIDATE $? "loading user data into mongoDB"
 
