@@ -51,7 +51,7 @@ VALIDATE $? "Downlodaing payment"
 
 cd /app
 
-unzip /tmp/payment.zip
+unzip -o /tmp/payment.zip
 
 VALIDATE $? "unzipping payment"
 
