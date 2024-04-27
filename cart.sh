@@ -68,9 +68,10 @@ VALIDATE $? "unzipping cart"
 npm install 
 
 VALIDATE $? "Installing dependencies" 
-#use absolutepath,because catalogue.service exists there
 
-cp /home/centos/robosho-shell/cart.service /etc/systemd/system/cart.service
+#use absolutepath,because cart.service exists there
+
+cp /home/centos/roboshop-shell/cart.service /etc/systemd/system/cart.service
 
 VALIDATE $? "copying cart service file"
 
