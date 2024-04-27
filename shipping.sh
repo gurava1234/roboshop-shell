@@ -52,7 +52,7 @@ cd /app
 
 VALIDATE $? "moving to app directory"
 
-unzip /tmp/shipping.zip
+unzip -o /tmp/shipping.zip
 
 VALIDATE $? "unzipping shipping"
 
