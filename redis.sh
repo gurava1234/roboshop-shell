@@ -10,7 +10,6 @@ N="\e[0m
 TIMESTAMP=$(date +%f-%H-%M-%M)
 LOGFILE="/tmp/$0-$TIMESTAMP.log"
 
-exec &>$LOGFILE
 
 echo "script started executing at $TIMESTAMP" &>> $LOGFILE
 
@@ -46,7 +45,7 @@ VALIDATE $? "instralling redis"
 
 sed -i 's/127.0.0.1/0.0.0.0/g' /etc/redis.conf
 
-VALIDATE $? "allowing fremote connections"
+VALIDATE $? "allowing remote connections"
 
 systemctl enable redis
 
