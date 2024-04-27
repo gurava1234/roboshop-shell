@@ -6,7 +6,7 @@ R="\e[31m"
 G="\e[32m"
 Y="\e[33m
 N="\e[0m
-MONGODB_HOST=mongo.gonepudirobot.online
+MONGODB_HOST="mongodb.daws76s.cfd"
 
 TIMESTAMP=$(date +%f-%H-%M-%M)
 LOGFILE="/tmp/$0-$TIMESTAMP.log"
@@ -31,17 +31,17 @@ else
    echo "you are root user"
 fi #fi means reverse of if, indicating condition end
 
-dnf module disable nodejs -y &>> $LOGFILE
+dnf module disable nodejs -y 
 
 VALIDATE $? "Disabaling current NodeJS" 
 
-dnf module enable nodejs:18 -y &>> $LOGFILE
+dnf module enable nodejs:18 -y 
 
-VALIDATE $? "enabling NodeJS:18 &>> 
+VALIDATE $? "enabling NodeJS:18"
 
-dnf install nodejs -y &>> $LOGFILE
+dnf install nodejs -y 
 
-VALIDATE $? "Installing NodeJS:18 
+VALIDATE $? "Installing NodeJS:18"
 
 id roboshop 
 if [$? -ne 0]
@@ -56,17 +56,17 @@ mkdir -p /app
 
 VALIDATE $? "creating app directory"
 
-curl -L -o /tmp/user.zip https://roboshop-builds.s3.amazonaws.com/user.zip &>> $LOGFILE
+curl -L -o /tmp/user.zip https://roboshop-builds.s3.amazonaws.com/user.zip 
 
-VALIDATE $? "Downloading user application" &>> $LOGFILE
+VALIDATE $? "Downloading user application" 
 
 cd /app
 
-unzip -o /tmp/user.zip &>> $LOGFILE
+unzip -o /tmp/user.zip 
 
 VALIDATE $? "unzipping user" 
 
-npm install &>> $LOGFILE
+npm install 
 
 VALIDATE $? "Installing dependencies"
 
@@ -74,27 +74,27 @@ cp /home/centos/roboshop-shell/user.service /etc/systemd/system/user.service
 
 VALIDATE $? "copying user service file"
 
-systemctl daemon-reload &>> $LOGFILE
+systemctl daemon-reload 
 
 VALIDATE $? "user daemon reload" 
 
-systemctl enable user &>> $LOGFILE
+systemctl enable user
 
 VALIDATE $? "Enable user" 
 
-systemctl start user &>> $LOGFILE
+systemctl start user 
 
 VALIDATE $? "starting user"
 
-cp /home/centos/robosho-shell/mongo.repo /etc/yum.repos.d/mongo.repo
+cp /home/centos/roboshop-shell/mongo.repo /etc/yum.repos.d/mongo.repo
 
 VALIDATE $? "copying mongodb repo" 
 
-dnf install mongodb-org-shell -y &>> $LOGFILE
+dnf install mongodb-org-shell -y 
 
 VALIDATE $? "Inatalling mongoDB client" 
 
-mongo --host $MONGODB_HOST </app/schema/catalogue.js &>> $LOGFILE
+mongo --host $MONGODB_HOST </app/schema/catalogue.js 
 
 VALIDATE $? "loading user data into mongoDB"
 
